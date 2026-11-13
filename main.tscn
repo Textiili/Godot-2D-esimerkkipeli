@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bp2a1h3fam1dc"]
-
-[ext_resource type="Script" uid="uid://bcrxysi16mhbg" path="res://HeiMaailma.cs" id="1_ig7tw"]
-
-[node name="Node2D" type="Node2D" unique_id=1419029790]
-script = ExtResource("1_ig7tw")
