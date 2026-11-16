@@ -27,7 +27,7 @@ public partial class SoundManager : Node
 
 		_audioPlayer = new AudioStreamPlayer
 		{
-			MaxPolyphony = 20,
+			MaxPolyphony = 32,
 			ProcessMode = ProcessModeEnum.Always
 		};
 		AddChild(_audioPlayer);

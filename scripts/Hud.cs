@@ -22,6 +22,8 @@ public partial class Hud : CanvasLayer
 		//Asetetaan score tekstielementtiin ja ruvetaan kuuntelemaan signaaleja.
 		UpdateScoreLabel(GameManager.Instance.Score); //Haetaan lähtöpisteet.
 		GameManager.Instance.ScoreChanged += UpdateScoreLabel; //Kuunnellaan signaaleja uusista pisteistä.
+
+		GameManager.Instance.GameEnded += ShowGameOver;
 	}
 
   public override void _ExitTree()
@@ -29,15 +31,12 @@ public partial class Hud : CanvasLayer
 		if (GameManager.Instance != null) 
 			GameManager.Instance.ScoreChanged -= UpdateScoreLabel;
 			GameManager.Instance.HighScoreChanged -= UpdateHighScoreLabel;
+			GameManager.Instance.GameEnded -= ShowGameOver;
 	}
 
-	private void UpdateHighScoreLabel(int highScore)
-	{
-		_highScoreLabel.Text = $"Highscore:\n{highScore}";
-	}
+	private void UpdateHighScoreLabel(int highScore) => _highScoreLabel.Text = $"Highscore:\n{highScore}";
 
-	private void UpdateScoreLabel(int score)
-	{
-		_scoreLabel.Text = $"Score:\n{score}";
-	}
+	private void UpdateScoreLabel(int score) => _scoreLabel.Text = $"Score:\n{score}";
+		
+	private void ShowGameOver() => _gameOverLabel.Visible = true;
 }

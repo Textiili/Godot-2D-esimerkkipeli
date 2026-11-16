@@ -1,20 +1,22 @@
 using Godot;
 using System;
 
-
 public partial class GameManager : Node
 {
 	public static GameManager Instance {get; private set; }
 	public int Score {get; private set; }
+	public int HighScore { get; private set; }
+
 	public event Action<int> ScoreChanged;
 	public event Action<int> HighScoreChanged;
-	public int HighScore { get; private set; }
+	public event Action GameEnded;
 	private AudioStreamPlayer _audioPlayer;
 
 	private const string LevelScenePath = "res://scenes/Level.tscn";
 
 	public override void _Ready()
 	{
+
 		Instance = this;
 		ProcessMode = ProcessModeEnum.Always;
 	}
@@ -61,6 +63,7 @@ public partial class GameManager : Node
 
 	public void GameOver()
 	{
+		GameEnded?.Invoke();
 		SoundManager.Instance.PlaySfx(Sfx.FullTime);
 		GetTree().Paused = true;
 		UpdateHighScore(Score);
