@@ -1,8 +1,8 @@
 using Godot;
 
-public partial class PlayerMovementTest : CharacterBody2D
+public partial class PlayerController : CharacterBody2D
 {
-    [Export] private float Speed = 100f;
+    private float Speed = 150f;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -11,5 +11,6 @@ public partial class PlayerMovementTest : CharacterBody2D
         Velocity = new Vector2(direction * Speed, 0);
 
         MoveAndSlide();
+        //TODO: Animate!
     }
 }

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk5yiy55n77y0"]
 
-[ext_resource type="Script" uid="uid://ckga8vxekhefv" path="res://scripts/PlayerMovementTest.cs" id="1_v6fml"]
+[ext_resource type="Script" uid="uid://s0w1jml1a1q1" path="res://scripts/PlayerController.cs" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://bmaqpsp1uqib3" path="res://assets/images/Idle.png" id="2_3li8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_by1fd"]
@@ -40,9 +40,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv5ji"]
-size = Vector2(15, 15)
+size = Vector2(15, 9)
 
 [node name="Player" type="CharacterBody2D" unique_id=876872050]
+z_index = 1
 collision_mask = 2
 script = ExtResource("1_v6fml")
 
@@ -50,8 +51,8 @@ script = ExtResource("1_v6fml")
 sprite_frames = SubResource("SpriteFrames_qg8jp")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.86561435
+frame_progress = 0.63698703
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941242423]
-position = Vector2(-0.5, 0.5)
+position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_bv5ji")

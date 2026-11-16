@@ -6,7 +6,7 @@ public partial class FallingObject : Area2D
 	[Signal] public delegate void MissedEventHandler();
 
 	private float FallSpeed = 30f;
-	
+
 	public override void _Ready()
 	{
 	  BodyEntered += OnBodyEntered;
@@ -21,6 +21,7 @@ public partial class FallingObject : Area2D
 	{ 
 		if (body.Name == "Player")
 		{
+			//TODO: Sound?
 			EmitSignal(SignalName.Caught);
 			QueueFree();
 		} else if (body.Name == "Floor")

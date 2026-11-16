@@ -7,32 +7,32 @@ public partial class Hud : CanvasLayer
 	private Label _gameOverLabel;
 	public override void _Ready()
 	{
-		//Haetaan päivitettävät tekstielementit
-		_highScoreLabel = GetNode<Label>("HighScore");
-		_scoreLabel = GetNode<Label>("Score");
-		_gameOverLabel = GetNode<Label>("GameOver");
+		//Haetaan päivitettävät tekstielementit Hudin solmurakenteesta
+		_highScoreLabel = GetNode<Label>("HudRoot/HighScore");
+		_scoreLabel = GetNode<Label>("HudRoot/Score");
+		_gameOverLabel = GetNode<Label>("HudRoot/GameOver");
 
 		//Asetetaan highscore tekstielementtiin, kun kohtaus ladataan uudelleen.
-		UpdateHighScoreLabel(GameManagerTest.Instance.HighScore);
+		UpdateHighScoreLabel(GameManager.Instance.HighScore);
 
 		//Asetetaan score tekstielementtiin ja ruvetaan kuuntelemaan signaaleja.
-		UpdateScoreLabel(GameManagerTest.Instance.Score); //Haetaan lähtöpisteet.
-		GameManagerTest.Instance.ScoreChanged += UpdateScoreLabel; //Kuunnellaan signaaleja uusista pisteistä.
+		UpdateScoreLabel(GameManager.Instance.Score); //Haetaan lähtöpisteet.
+		GameManager.Instance.ScoreChanged += UpdateScoreLabel; //Kuunnellaan signaaleja uusista pisteistä.
 	}
 
   public override void _ExitTree()
 	{
-		if (GameManagerTest.Instance != null) 
-			GameManagerTest.Instance.ScoreChanged -= UpdateScoreLabel;
+		if (GameManager.Instance != null) 
+			GameManager.Instance.ScoreChanged -= UpdateScoreLabel;
 	}
 
 	private void UpdateHighScoreLabel(int highScore)
 	{
-		_highScoreLabel.Text = $"Highscore: {highScore}";
+		_highScoreLabel.Text = $"Highscore:\n{highScore}";
 	}
 
 	private void UpdateScoreLabel(int score)
 	{
-		_scoreLabel.Text = $"Score: {score}";
+		_scoreLabel.Text = $"Score:\n{score}";
 	}
 }

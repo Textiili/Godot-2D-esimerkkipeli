@@ -17,7 +17,7 @@ config/icon="res://assets/images/icon.svg"
 
 [autoload]
 
-GameManagerTest="*uid://caaotx34hhp2"
+GameManager="*uid://caaotx34hhp2"
 
 [display]
 
