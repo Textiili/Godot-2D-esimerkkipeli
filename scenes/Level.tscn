@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://djdhcj4ycwsb1" path="res://scripts/Spawner.cs" id="1_kl8ac"]
 [ext_resource type="PackedScene" uid="uid://bk5yiy55n77y0" path="res://scenes/Player.tscn" id="1_uhqny"]
-[ext_resource type="Texture2D" uid="uid://bubrsqhjgtcqm" path="res://assets/images/FootballField.png" id="2_kl8ac"]
+[ext_resource type="Texture2D" uid="uid://bubrsqhjgtcqm" path="res://assets/images/football_field.png" id="2_kl8ac"]
 [ext_resource type="Script" uid="uid://brsyoqck58pcu" path="res://scripts/Hud.cs" id="3_6vs76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg8jp"]
-size = Vector2(32, 96)
+size = Vector2(19, 96)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qg8jp"]
 
@@ -19,7 +19,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_kl8ac")
 
 [node name="Player" parent="." unique_id=876872050 instance=ExtResource("1_uhqny")]
-position = Vector2(88, 88)
+position = Vector2(88, 86)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1400811641]
 wait_time = 4.0
@@ -84,20 +84,20 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall" unique_id=1183715184]
-position = Vector2(16, 48)
+position = Vector2(8.5, 48)
 shape = SubResource("RectangleShape2D_qg8jp")
 
-[node name="Wall2" type="StaticBody2D" parent="Walls" unique_id=306309070]
-position = Vector2(144, 0)
+[node name="Wall2" type="StaticBody2D" parent="Walls" unique_id=1712400585]
+position = Vector2(158, 0)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" unique_id=1045253314]
-position = Vector2(16, 48)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" unique_id=1514246783]
+position = Vector2(8.5, 48)
 shape = SubResource("RectangleShape2D_qg8jp")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1497623197]
-position = Vector2(0, 96)
+position = Vector2(0, 102)
 collision_layer = 12
 collision_mask = 8
 
