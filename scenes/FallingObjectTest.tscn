@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bf1cpmgk3q3ir"]
+
+[ext_resource type="Script" uid="uid://c15twqox1a4hb" path="res://scripts/FallingObject.cs" id="1_0c7yb"]
+[ext_resource type="Texture2D" uid="uid://begikemscwthu" path="res://assets/images/Football.png" id="2_0c7yb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujnnh"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wto2l"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jkyc"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggpue"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2y3h"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waxum"]
+atlas = ExtResource("2_0c7yb")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bv5ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujnnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wto2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jkyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggpue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2y3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waxum")
+}],
+"loop": 1,
+"name": &"rolling",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qg8jp"]
+radius = 7.017544
+
+[node name="FallingObjectTest" type="Area2D" unique_id=889683634]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_0c7yb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=180296677]
+sprite_frames = SubResource("SpriteFrames_bv5ji")
+animation = &"rolling"
+autoplay = "rolling"
+frame_progress = 0.35903504
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=430439985]
+shape = SubResource("CircleShape2D_qg8jp")

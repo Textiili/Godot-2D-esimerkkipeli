@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://jyjbrft7bou"]
+
+[ext_resource type="Script" uid="uid://djdhcj4ycwsb1" path="res://scripts/Spawner.cs" id="1_kl8ac"]
+[ext_resource type="PackedScene" uid="uid://bk5yiy55n77y0" path="res://scenes/Player.tscn" id="1_uhqny"]
+[ext_resource type="Texture2D" uid="uid://bubrsqhjgtcqm" path="res://assets/images/FootballField.png" id="2_kl8ac"]
+[ext_resource type="Script" uid="uid://brsyoqck58pcu" path="res://scripts/Hud.cs" id="3_6vs76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg8jp"]
+size = Vector2(32, 96)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qg8jp"]
+
+[node name="Level" type="Node2D" unique_id=154732401]
+script = ExtResource("1_kl8ac")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=519723117]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_kl8ac")
+
+[node name="Player" parent="." unique_id=876872050 instance=ExtResource("1_uhqny")]
+position = Vector2(88, 88)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1400811641]
+wait_time = 4.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=102073191]
+script = ExtResource("3_6vs76")
+
+[node name="HighScore" type="Label" parent="HUD" unique_id=1871155916]
+offset_right = 400.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 20
+
+[node name="Score" type="Label" parent="HUD" unique_id=1080877658]
+offset_left = 752.0
+offset_right = 1152.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 20
+
+[node name="GameOver" type="Label" parent="HUD" unique_id=2088478007]
+visible = false
+offset_left = 233.0
+offset_top = 213.0
+offset_right = 949.0
+offset_bottom = 436.0
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Walls" type="Node" parent="." unique_id=1734779175]
+
+[node name="Wall" type="StaticBody2D" parent="Walls" unique_id=1392303238]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall" unique_id=1183715184]
+position = Vector2(16, 48)
+shape = SubResource("RectangleShape2D_qg8jp")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" unique_id=306309070]
+position = Vector2(144, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" unique_id=1045253314]
+position = Vector2(16, 48)
+shape = SubResource("RectangleShape2D_qg8jp")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1497623197]
+position = Vector2(0, 96)
+collision_layer = 12
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1884913030]
+shape = SubResource("WorldBoundaryShape2D_qg8jp")

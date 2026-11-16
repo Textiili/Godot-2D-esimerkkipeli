@@ -2,8 +2,7 @@ using Godot;
 
 public partial class PlayerMovementTest : CharacterBody2D
 {
-    [Export]
-    public float Speed = 300f;
+    [Export] private float Speed = 100f;
 
     public override void _PhysicsProcess(double delta)
     {
