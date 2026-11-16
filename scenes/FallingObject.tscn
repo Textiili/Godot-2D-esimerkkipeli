@@ -49,7 +49,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1i3ic")
 }],
 "loop": 1,
-"name": &"rolling",
+"name": &"football_rolling",
 "speed": 20.0
 }]
 
@@ -63,9 +63,8 @@ script = ExtResource("1_ov36a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=180296677]
 sprite_frames = SubResource("SpriteFrames_bv5ji")
-animation = &"rolling"
-autoplay = "rolling"
-frame_progress = 0.42518315
+animation = &"football_rolling"
+autoplay = "football_rolling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=430439985]
 shape = SubResource("CircleShape2D_qg8jp")

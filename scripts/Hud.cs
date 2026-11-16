@@ -7,6 +7,9 @@ public partial class Hud : CanvasLayer
 	private Label _gameOverLabel;
 	public override void _Ready()
 	{
+		//Sallitaan, että UI voi päivittyä, kun peli on pysäytetty.
+		ProcessMode = ProcessModeEnum.Always;
+
 		//Haetaan päivitettävät tekstielementit Hudin solmurakenteesta
 		_highScoreLabel = GetNode<Label>("HudRoot/HighScore");
 		_scoreLabel = GetNode<Label>("HudRoot/Score");
@@ -14,6 +17,7 @@ public partial class Hud : CanvasLayer
 
 		//Asetetaan highscore tekstielementtiin, kun kohtaus ladataan uudelleen.
 		UpdateHighScoreLabel(GameManager.Instance.HighScore);
+		GameManager.Instance.HighScoreChanged += UpdateHighScoreLabel;
 
 		//Asetetaan score tekstielementtiin ja ruvetaan kuuntelemaan signaaleja.
 		UpdateScoreLabel(GameManager.Instance.Score); //Haetaan lähtöpisteet.
@@ -24,6 +28,7 @@ public partial class Hud : CanvasLayer
 	{
 		if (GameManager.Instance != null) 
 			GameManager.Instance.ScoreChanged -= UpdateScoreLabel;
+			GameManager.Instance.HighScoreChanged -= UpdateHighScoreLabel;
 	}
 
 	private void UpdateHighScoreLabel(int highScore)

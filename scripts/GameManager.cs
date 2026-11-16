@@ -7,7 +7,9 @@ public partial class GameManager : Node
 	public static GameManager Instance {get; private set; }
 	public int Score {get; private set; }
 	public event Action<int> ScoreChanged;
+	public event Action<int> HighScoreChanged;
 	public int HighScore { get; private set; }
+	private AudioStreamPlayer _audioPlayer;
 
 	private const string LevelScenePath = "res://scenes/Level.tscn";
 
@@ -48,16 +50,18 @@ public partial class GameManager : Node
 		ScoreChanged?.Invoke(Score); //Viestii UI:lle pelin aikana pisteiden muutokset.
 	}
 
-	public void UpdateHighScore(int score)
+	public void UpdateHighScore(int newScore)
 	{
-		if (score > HighScore)
+		if (newScore > HighScore)
 		{
-			HighScore = score;
+			HighScore = newScore;
+			HighScoreChanged?.Invoke(HighScore);
 		}
 	}
 
 	public void GameOver()
 	{
+		SoundManager.Instance.PlaySfx(Sfx.FullTime);
 		GetTree().Paused = true;
 		UpdateHighScore(Score);
 	}

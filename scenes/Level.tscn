@@ -21,9 +21,6 @@ texture = ExtResource("2_kl8ac")
 [node name="Player" parent="." unique_id=876872050 instance=ExtResource("1_uhqny")]
 position = Vector2(88, 86)
 
-[node name="SpawnTimer" type="Timer" parent="." unique_id=1400811641]
-wait_time = 4.0
-
 [node name="HUD" type="CanvasLayer" parent="." unique_id=102073191]
 script = ExtResource("3_6vs76")
 
@@ -98,7 +95,7 @@ shape = SubResource("RectangleShape2D_qg8jp")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1497623197]
 position = Vector2(0, 102)
-collision_layer = 12
+collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1884913030]
