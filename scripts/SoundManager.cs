@@ -27,7 +27,7 @@ public partial class SoundManager : Node
 
 		_audioPlayer = new AudioStreamPlayer
 		{
-			MaxPolyphony = 32,
+			MaxPolyphony = 64, //Huom! Iso polyphonia ei ole optimi vaihtoehto suorituskyvyn kannalta!
 			ProcessMode = ProcessModeEnum.Always
 		};
 		AddChild(_audioPlayer);
