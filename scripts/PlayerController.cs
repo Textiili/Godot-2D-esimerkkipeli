@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PlayerController : CharacterBody2D
 {
-    private float Speed = 150f;
+    private float Speed = 80f;
     private AnimatedSprite2D _sprite;
 
   public override void _Ready()

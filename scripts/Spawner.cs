@@ -1,15 +1,18 @@
 using Godot;
+using System.Linq;
 
 public partial class Spawner : Node2D
 {
 	PackedScene FallingObject = GD.Load<PackedScene>("res://scenes/FallingObject.tscn");
     private readonly RandomNumberGenerator _rng = new();
+    private ReferenceRect SpawnArea;
     private Timer _spawnTimer;
     private int _scoreThresholdForAcceleration = 5;
     private float _acceleration = 0.9f;
 
     public override void _Ready()
     {
+        SpawnArea = GetChildren().OfType<ReferenceRect>().Single();
         _rng.Randomize();
 
         _spawnTimer = new Timer
@@ -35,9 +38,10 @@ public partial class Spawner : Node2D
 
     private void SpawnObject()
     {
+        Rect2 area = SpawnArea.GetGlobalRect();
+
         var obj = FallingObject.Instantiate<FallingObject>();
-        float width = GetViewportRect().Size.X;
-        obj.Position = new Vector2(_rng.RandfRange(32, width - 32), -32); //TODO: SpawnPoint
+        obj.GlobalPosition = new Vector2(_rng.RandfRange(area.Position.X, area.End.X), area.Position.Y);
 
         obj.Caught += OnCaught;
         obj.Missed += OnMissed;
