@@ -18,9 +18,9 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 56.0
-offset_top = -32.0
+offset_top = -14.0
 offset_right = 120.0
-offset_bottom = -29.0
+offset_bottom = -11.0
 grow_horizontal = 2
 
 [node name="Background" type="TextureRect" parent="." unique_id=519723117]

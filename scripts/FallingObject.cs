@@ -1,4 +1,3 @@
-using System.Drawing;
 using Godot;
 
 public partial class FallingObject : Area2D
@@ -6,7 +5,7 @@ public partial class FallingObject : Area2D
 	[Signal] public delegate void CaughtEventHandler();
 	[Signal] public delegate void MissedEventHandler();
 
-	private float FallSpeed = 30f;
+	private const float FallSpeed = 50f;
 
 	public override void _Ready()
 	{
@@ -22,7 +21,7 @@ public partial class FallingObject : Area2D
 	{ 
 		if (body.Name == "Player")
 		{
-			//TODO: Sound?
+			SoundManager.Instance.PlaySfx(Sfx.ScoringPoint);
 			EmitSignal(SignalName.Caught);
 			QueueFree();
 		} else if (body.Name == "Floor")

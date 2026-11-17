@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Linq;
 
 public partial class Spawner : Node2D
@@ -8,7 +9,8 @@ public partial class Spawner : Node2D
     private ReferenceRect SpawnArea;
     private Timer _spawnTimer;
     private int _scoreThresholdForAcceleration = 5;
-    private float _acceleration = 0.9f;
+    private const float _acceleration = 0.85f;
+    private const float _accelerationCap = 0.35f;
 
     public override void _Ready()
     {
@@ -29,7 +31,7 @@ public partial class Spawner : Node2D
         if (GameManager.Instance.Score >= _scoreThresholdForAcceleration)
         {
             _scoreThresholdForAcceleration = GameManager.Instance.Score + 5;
-            _spawnTimer.WaitTime = _spawnTimer.WaitTime * _acceleration;
+            _spawnTimer.WaitTime = Mathf.Max(_spawnTimer.WaitTime * _acceleration, _accelerationCap);
 
             GD.Print($"Speeding up! \nNew objects are spawned now every {_spawnTimer.WaitTime} seconds.");
             GD.Print($"Game will get harder when player reaches score of {_scoreThresholdForAcceleration}.");
@@ -47,7 +49,7 @@ public partial class Spawner : Node2D
         obj.Missed += OnMissed;
         AddChild(obj);
 
-        SoundManager.Instance.PlaySfx(Sfx.Kick);
+        SoundManager.Instance.PlaySfx(Sfx.Kick, true);
     }
 
     private void OnCaught() => GameManager.Instance.AddScore();
