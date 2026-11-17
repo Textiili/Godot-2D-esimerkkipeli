@@ -22,34 +22,35 @@ public partial class SoundManager : Node
 		_rng.Randomize();
 		ProcessMode = ProcessModeEnum.Always;
 
-		//Ladataan ääniefektit muistiin ja asetetaan ne _streams
+		//Ladataan ääniefektit muistiin ja asetetaan ne _streams-sanakirjaan
 		_streams[Sfx.FullTime] = GD.Load<AudioStream>("res://assets/audio/sfx_full_time.wav");
 		_streams[Sfx.Kick] = GD.Load<AudioStream>("res://assets/audio/sfx_kick.wav");
 		_streams[Sfx.ScoringPoint] = GD.Load<AudioStream>("res://assets/audio/sfx_scoring_point.wav");
 
+		//Luodaan PoolSize verran AudioStreamPlayer-nodeja
 		for (int i = 0; i < PoolSize; i++)
 		{
 			var audioPlayer = new AudioStreamPlayer { Bus = "SFX" };
 			AddChild(audioPlayer);
-			_pool.Add(audioPlayer);
+			_pool.Add(audioPlayer); //Lisätään ne AudioStreamPlayer-listaan nimeltään _pool
 		}
 	}
 
-	public void PlaySfx(Sfx sfx, bool randomizePitch = false)
+	public void PlaySfx(Sfx sfx, bool randomizePitch = false) //Vaaditaan parametriksi enum Sfx:lle ja voidaan syöttää true jos halutaan antaa satunnainen korkeus
 	{
 		double now = Time.GetTicksMsec() / 1000.0;
 
 		if (_lastPlayed.TryGetValue(sfx, out double last) && now - last < MinRepeatDelay)
+			return; //Jos x niin ei suoriteta metodia loppuun.
+
+		AudioStreamPlayer free = _pool.Find(p => !p.Playing); 
+		if (free == null) //Jos ei löydetä vapaata audiolähdettä metodia ei suoriteta loppuun.
 			return;
 
-		AudioStreamPlayer free = _pool.Find(p => !p.Playing);
-		if (free == null)
-			return;
+		free.Stream = _streams[sfx]; //Jos löytyi vapaa audiolähde, asetetaan parametriksi annettu sfx
+		free.PitchScale = randomizePitch ? _rng.RandfRange(0.95f, 1.05f) : 1f; //Jos oli annettu parametri randomizePitch true, annetaan satunnainen korkeus
+		free.Play(); //Toistetaan sfx
 
-		free.Stream = _streams[sfx];
-		free.PitchScale = randomizePitch ? _rng.RandfRange(0.95f, 1.05f) : 1f;
-		free.Play();
-
-		_lastPlayed[sfx] = now;
+		_lastPlayed[sfx] = now; 
   }
 }

@@ -5,6 +5,7 @@ public partial class Hud : CanvasLayer
 	private Label _highScoreLabel;
 	private Label _scoreLabel;
 	private Label _gameOverLabel;
+
 	public override void _Ready()
 	{
 		//Sallitaan, että UI voi päivittyä, kun peli on pysäytetty.
@@ -23,10 +24,10 @@ public partial class Hud : CanvasLayer
 		UpdateScoreLabel(GameManager.Instance.Score); //Haetaan lähtöpisteet.
 		GameManager.Instance.ScoreChanged += UpdateScoreLabel; //Kuunnellaan signaaleja uusista pisteistä.
 
-		GameManager.Instance.GameEnded += ShowGameOver;
+		GameManager.Instance.GameEnded += ShowGameOver; //Kuunnellaan signaaleja pelin loppumisesta.
 	}
 
-  public override void _ExitTree()
+  public override void _ExitTree() //Kun tämä node tuhotaan, varmistetaan, että se poistetaan kuuntelijoiden listalta jokaiselta seuraavalta signaalilta
 	{
 		if (GameManager.Instance != null) 
 			GameManager.Instance.ScoreChanged -= UpdateScoreLabel;
@@ -34,9 +35,8 @@ public partial class Hud : CanvasLayer
 			GameManager.Instance.GameEnded -= ShowGameOver;
 	}
 
+	//Yksinkertaiset metodit, joilla päivitetään HUD:n elementtejä
 	private void UpdateHighScoreLabel(int highScore) => _highScoreLabel.Text = $"Highscore:\n{highScore}";
-
 	private void UpdateScoreLabel(int score) => _scoreLabel.Text = $"Score:\n{score}";
-		
 	private void ShowGameOver() => _gameOverLabel.Visible = true;
 }
