@@ -50,6 +50,7 @@ public partial class GameManager : Node
 	{
 		Score += 1;
 		ScoreChanged?.Invoke(Score); //Viestii UI:lle pelin aikana pisteiden muutokset.
+		SoundManager.Instance.PlaySfx(Sfx.ScoringPoint);
 	}
 
 	public void UpdateHighScore(int newScore)

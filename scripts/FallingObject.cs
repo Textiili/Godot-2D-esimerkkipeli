@@ -19,7 +19,6 @@ public partial class FallingObject : Area2D
 		if (body.Name == "Player")
 		{
 			GameManager.Instance.AddScore();
-			SoundManager.Instance.PlaySfx(Sfx.ScoringPoint);
 			QueueFree();
 		} else if (body.Name == "Floor")
 		{
