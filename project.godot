@@ -25,9 +25,11 @@ SoundManager="*uid://bf1lkb7hmvrbf"
 
 window/size/viewport_width=176
 window/size/viewport_height=96
+window/size/resizable=false
 window/size/window_width_override=1056
 window/size/window_height_override=576
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -76,4 +78,5 @@ restart={
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/lossless_compression/force_png=true
 2d/snap/snap_2d_transforms_to_pixel=true

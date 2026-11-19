@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Linq;
 
 public partial class Spawner : Node2D
@@ -13,7 +12,7 @@ public partial class Spawner : Node2D
     private Timer _spawnTimer;
     private int _scoreThresholdForAcceleration = 5;
     private const float _acceleration = 0.85f;
-    private const float _accelerationCap = 0.30f;
+    private const float _accelerationCap = 0.35f;
 
     public override void _Ready()
     {
@@ -47,15 +46,8 @@ public partial class Spawner : Node2D
 
         var obj = FallingObject.Instantiate<FallingObject>();
         obj.GlobalPosition = new Vector2(_rng.RandfRange(area.Position.X, area.End.X), area.Position.Y);
-
-        obj.Caught += OnCaught;
-        obj.Missed += OnMissed;
         AddChild(obj);
 
         SoundManager.Instance.PlaySfx(Sfx.Kick, true);
     }
-
-    private void OnCaught() => GameManager.Instance.AddScore();
-
-    private void OnMissed() => GameManager.Instance.GameOver();
 }

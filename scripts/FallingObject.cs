@@ -2,9 +2,6 @@ using Godot;
 
 public partial class FallingObject : Area2D
 {
-	[Signal] public delegate void CaughtEventHandler();
-	[Signal] public delegate void MissedEventHandler();
-
 	private const float FallSpeed = 50f;
 
 	public override void _Ready()
@@ -21,12 +18,12 @@ public partial class FallingObject : Area2D
 	{ 
 		if (body.Name == "Player")
 		{
+			GameManager.Instance.AddScore();
 			SoundManager.Instance.PlaySfx(Sfx.ScoringPoint);
-			EmitSignal(SignalName.Caught);
 			QueueFree();
 		} else if (body.Name == "Floor")
 		{
-			EmitSignal(SignalName.Missed);
+			GameManager.Instance.GameOver();
 			QueueFree();
 		}
 	}
