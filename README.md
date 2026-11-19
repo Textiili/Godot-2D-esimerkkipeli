@@ -1,6 +1,6 @@
 ## How to play?
 
-Don't let footballs reach goal area!
+Don't let the footballs reach the goal area!
 
 ### Controls
 
