@@ -16,4 +16,4 @@ Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Li
 
 ### Other assets
 
-Are created by me and free to use without any licensing terms.
+Are created by me and free to use without any licensing conditions.
