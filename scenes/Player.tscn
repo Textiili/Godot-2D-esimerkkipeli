@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bruh7")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"move_left",
 "speed": 10.0
 }, {
@@ -102,13 +102,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lkdrv")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"move_right",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv5ji"]
-size = Vector2(11, 9)
+size = Vector2(10, 9)
 
 [node name="Player" type="CharacterBody2D" unique_id=876872050]
 z_index = 1
@@ -117,10 +117,9 @@ script = ExtResource("1_v6fml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099949263]
 sprite_frames = SubResource("SpriteFrames_qg8jp")
-animation = &"move_right"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.6604263
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941242423]
-position = Vector2(-0.5, 3.5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_bv5ji")
