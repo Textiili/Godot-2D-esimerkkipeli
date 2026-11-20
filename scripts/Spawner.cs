@@ -43,11 +43,11 @@ public partial class Spawner : Node2D
     private void SpawnObject()
     {
         Rect2 area = SpawnArea.GetGlobalRect();
-
+        
         var obj = FallingObject.Instantiate<FallingObject>();
         obj.GlobalPosition = new Vector2(_rng.RandfRange(area.Position.X, area.End.X), area.Position.Y);
         AddChild(obj);
-
+        
         SoundManager.Instance.PlaySfx(Sfx.Kick, true);
     }
 }

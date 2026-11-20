@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bruh7")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"move_left",
 "speed": 10.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lkdrv")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"move_right",
 "speed": 10.0
 }]
@@ -117,7 +117,7 @@ script = ExtResource("1_v6fml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099949263]
 sprite_frames = SubResource("SpriteFrames_qg8jp")
-animation = &"idle"
+animation = &"move_right"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=941242423]

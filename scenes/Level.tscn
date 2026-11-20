@@ -117,7 +117,7 @@ shape = SubResource("RectangleShape2D_qg8jp")
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1497623197]
 position = Vector2(0, 102)
 collision_layer = 4
-collision_mask = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1884913030]
 shape = SubResource("WorldBoundaryShape2D_qg8jp")
