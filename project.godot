@@ -20,6 +20,7 @@ config/icon="res://assets/images/icon.svg"
 
 GameManager="*uid://caaotx34hhp2"
 SoundManager="*uid://bf1lkb7hmvrbf"
+Dab="*uid://cevsog2lvxwvh"
 
 [display]
 

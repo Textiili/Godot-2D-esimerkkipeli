@@ -10,7 +10,6 @@ public partial class GameManager : Node
 	public event Action<int> ScoreChanged;
 	public event Action<int> HighScoreChanged;
 	public event Action GameEnded;
-	private AudioStreamPlayer _audioPlayer;
 
 	private const string LevelScenePath = "res://scenes/Level.tscn";
 
