@@ -32,7 +32,7 @@ public partial class GameManager : Node
 		}
 	}
 
-	public async void NewGame()
+	private void NewGame()
 	{
 		//Muutetaan uutta peliä varten pisteet nollaan ja ilmoitetaan HUD:lle muutoksesta
 		Score = 0;
