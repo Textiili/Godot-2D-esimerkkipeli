@@ -11,8 +11,8 @@ public partial class Spawner : Node2D
     private ReferenceRect SpawnArea;
     private Timer _spawnTimer;
     private int _scoreThresholdForAcceleration = 5;
-    private const float _acceleration = 0.85f;
-    private const float _accelerationCap = 0.35f;
+    private const float _spawningAcceleration = 0.85f;
+    private const float _spawningAccelerationCap = 0.35f;
 
     public override void _Ready()
     {
@@ -33,7 +33,7 @@ public partial class Spawner : Node2D
         if (GameManager.Instance.Score >= _scoreThresholdForAcceleration) //Tarkistetaan, ylittävätkö pisteet rajan, jonka ylittämisestä putoavien objektien luominen nopeutuu.
         {
             _scoreThresholdForAcceleration = GameManager.Instance.Score + 5; //Jos raja ylitettiin asetetaan uusi raja, joka on pisteiden määrä + 5
-            _spawnTimer.WaitTime = Mathf.Max(_spawnTimer.WaitTime * _acceleration, _accelerationCap); //Kiihdytetään uusien objektien luomisnopeutta laskemalla ajastimen lähtöarvoa.
+            _spawnTimer.WaitTime = Mathf.Max(_spawnTimer.WaitTime * _spawningAcceleration, _spawningAccelerationCap); //Kiihdytetään uusien objektien luomisnopeutta laskemalla ajastimen lähtöarvoa.
 
             GD.Print($"Speeding up! \nNew objects are spawned now every {_spawnTimer.WaitTime} seconds.");
             GD.Print($"Game will get harder when player reaches score of {_scoreThresholdForAcceleration}.");
