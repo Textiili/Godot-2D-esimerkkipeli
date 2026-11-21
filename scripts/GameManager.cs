@@ -26,7 +26,7 @@ public partial class GameManager : Node
 		{
 			GetTree().Quit();
 		}
-		if (Input.IsActionJustPressed("restart")) //TODO: Remove, restart is only dev tool?
+		if (Input.IsActionJustPressed("restart")) 
 		{
 			NewGame();
 		}
@@ -36,7 +36,6 @@ public partial class GameManager : Node
 	{
 		//Muutetaan uutta peliä varten pisteet nollaan ja ilmoitetaan HUD:lle muutoksesta
 		Score = 0;
-		ScoreChanged?.Invoke(Score);
 
 		//Laitetaan paussi pois päältä
 		GetTree().Paused = false;
@@ -52,11 +51,11 @@ public partial class GameManager : Node
 		SoundManager.Instance.PlaySfx(Sfx.ScoringPoint);
 	}
 
-	public void UpdateHighScore(int newScore)
+	public void UpdateHighScore(int score)
 	{
-		if (newScore > HighScore)
+		if (score > HighScore)
 		{
-			HighScore = newScore;
+			HighScore = score;
 			HighScoreChanged?.Invoke(HighScore);
 		}
 	}
